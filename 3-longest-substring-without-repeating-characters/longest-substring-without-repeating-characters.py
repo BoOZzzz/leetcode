@@ -4,15 +4,17 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-        max_length = left = 0
-        count = {}
 
-        for right, c in enumerate(s):
-            count[c] = 1 + count.get(c, 0)
-            while count[c] > 1:
-                count[s[left]] -= 1
-                left += 1
-        
-            max_length = max(max_length, right - left + 1)
+        #sliding window, use a left and right pointer to simplify algorithm
+        l, res = 0, 0 #pointer to subtract, solution var
+        r = 0 #pointer to add
+        window = set() # cheeck duplicate
+        while r < len(s): #iterate through given list str
+            while s[r] in window:   #iterate through window to remove dups
+                window.remove(s[l]) #remove dups from window
+                l+=1 #shorten window size
+            window.add(s[r]) #add new element to window
+            res = max(res, r-l+1) #update max window size
+            r+=1 #increase window size
 
-        return max_length
+        return res
