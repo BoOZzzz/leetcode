@@ -1,14 +1,10 @@
-class Solution(object):
-    def twoSum(self, nums, target):
-        """
-        :type nums: List[int]
-        :type target: int
-        :rtype: List[int]
-        """
-        hmap = {}
-        for i in range(len(nums)):
-            key = target - nums[i]
-            if key in hmap:
-                return [hmap[key], i]
-            hmap[nums[i]] = i
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        pairs = {}
 
+        for i in range(len(nums)):
+            if target - nums[i] in pairs:
+                return [i, pairs[target-nums[i]]]
+            else:
+                pairs[nums[i]] = i
+            
