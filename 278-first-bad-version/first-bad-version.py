@@ -16,6 +16,6 @@ class Solution:
             if current is False:
                 lp = mid+1
             else:
-                rp = mid-1
+                rp = mid
 
         return lp
