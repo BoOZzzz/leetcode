@@ -9,8 +9,8 @@ class Solution:
         rp = n
         while lp < rp:
             mid = (lp+rp)//2
-            current = isBadVersion(mid)
-            if current is False:
+            
+            if isBadVersion((lp+rp)//2) is False:
                 lp = mid+1
             else:
                 rp = mid
