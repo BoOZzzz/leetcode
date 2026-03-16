@@ -11,7 +11,8 @@ class Solution:
             mid = (lp+rp)//2
             current = isBadVersion(mid)
             print(mid, current)
-
+            if isBadVersion(mid-1) ^ current:
+                return mid
             if current is False:
                 lp = mid+1
             else:
